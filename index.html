@@ -10,26 +10,37 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body>
+<body class="bg-light">
     <div class="container">
+        <header class="text-center">
+            <h1>Generátor tabuľky</h1>
+        </header>
+
         <div class="row">
             <article class="col-md">
                 <form>
-                    <div class="form-group">
+                    <div class="form-group required">
                         <label for="formGroupExampleInput">Pocet riadkov</label>
-                        <input type="number" min="1" max="9" class="form-control" id="rowNumner" placeholder="X">
+                        <input type="number" min="1" max="9" class="form-control is-invalid" id="rowNumber" onblur="checkValue('rowNumber')" placeholder="X">
+                        <div class="invalid-feedback">
+                            Chybná hodnota počtu riadkov!
+                          </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group required">
                         <label for="formGroupExampleInput2">Počet stĺpcov</label>
-                        <input type="numer" min="1" max="9" class="form-control" id="colNumber" placeholder="Y">
+                        <input type="number" min="1" max="9" class="form-control is-invalid" id="colNumber" onblur="checkValue('colNumber')" placeholder="Y">
+                        <div class="invalid-feedback">
+                            Chybná hodnota počtu stĺpcov!
+                          </div>
                     </div>
+                    <hr>
                     <div>
-                        <button type="button" onclick="generateTable()" class="btn btn-primary">Generovať tabuľku</button>
+                        <button type="button" onclick="return formCheck()" class="btn btn-outline-primary btn-lg">Generovať tabuľku</button>
                     </div>
 
                     <div id="layer" onclick="closeWindow()">
                         <div id="modal">
-                            <h3>Vygenerovaná tabuľka</h3>
+                            <h3 class="text-center">Vygenerovaná tabuľka</h3>
                             <hr>
                             <div>
                                 <table id="table" class="table table-bordered">
